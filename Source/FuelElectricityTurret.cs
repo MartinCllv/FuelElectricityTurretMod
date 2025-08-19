@@ -56,6 +56,7 @@ namespace FuelElectricityTurretMod
                 yield return gizmo;
             }
 
+
         }
         public override string GetInspectString()
         {
@@ -66,9 +67,7 @@ namespace FuelElectricityTurretMod
             {
                 stringBuilder.AppendLine(inspectString);
             }
-
-            stringBuilder.AppendLine("PowerBatteryStored".Translate() + ": " + GetComp<CompElectricalChargable>().Charge.ToString("F0") + " / " + GetComp<CompElectricalChargable>().ChargeCapacity.ToString("F0") + "\n" + "Charging at " + GetComp<CompElectricalChargable>().NetPowerconsumptioOnCharge.ToString("F0") + " Wd" + "\n" + "Remaining Shoots: " + remaining_shoots.ToString("F0"));
-           
+            stringBuilder.AppendLine("PowerBatteryStored".Translate() + ": " + GetComp<CompElectricalChargable>().Charge.ToString("F0") + " / " + GetComp<CompElectricalChargable>().ChargeCapacity.ToString("F0") + "\n" + "Charging at " + GetComp<CompElectricalChargable>().NetPowerconsumptioOnCharge.ToString("F0") + " W" + "\n" + "Remaining Shoots: " + remaining_shoots.ToString("F0"));
             return stringBuilder.ToString().TrimEndNewlines();
         }
 
