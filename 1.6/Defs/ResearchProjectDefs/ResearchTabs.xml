@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<Defs>
+
+  <ResearchTabDef>
+    <defName>BIGArmament</defName>
+    <label>High Caliber Armament</label>
+    <generalTitle>High Caliber Armament</generalTitle>
+    <generalDescription>Research specialised on High Caliber Armament</generalDescription>
+  </ResearchTabDef>
+
+</Defs>

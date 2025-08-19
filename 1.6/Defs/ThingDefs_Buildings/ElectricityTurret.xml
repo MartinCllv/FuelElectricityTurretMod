@@ -1,0 +1,171 @@
+<?xml version="1.0" encoding="utf-8" ?> 
+
+<Defs>
+  <ThingDef ParentName="BuildingBase" Name="FuelElectricityTurret" Abstract="True"> 
+    <thingClass>FuelElectricityTurretMod.Electricity_Turret</thingClass>
+    <drawerType>MapMeshAndRealTime</drawerType>
+    <drawHighlight>true</drawHighlight>
+    <drawHighlightOnlyForHostile>true</drawHighlightOnlyForHostile>
+    <graphicData>
+      <texPath>Things/Building/Security/Beam_base</texPath>
+      <graphicClass>Graphic_Single</graphicClass>
+      <drawSize>(2.7, 2.7)</drawSize>
+      <drawOffset>(0,0,0)</drawOffset>
+      <damageData>
+        <rect>(0.2,0.2,0.6,0.6)</rect>
+      </damageData>
+      <shadowData>
+        <volume>(1.5,0.35,1.4)</volume>
+        <offset>(0,0,-0.05)</offset>
+      </shadowData>
+    </graphicData>  
+	<!--<altitudeLayer>Darkness</altitudeLayer>-->
+    <altitudeLayer>MoteOverhead</altitudeLayer>
+    <stealable>false</stealable>
+    <rotatable>false</rotatable>
+    <size>(3,3)</size>
+    <statBases>
+      <MaxHitPoints>1880</MaxHitPoints>
+      <Flammability>0</Flammability>
+      <WorkToBuild>15000</WorkToBuild>
+      <Mass>800</Mass>
+      <Beauty>-20</Beauty>
+    </statBases>
+    <tickerType>Normal</tickerType>
+    <passability>PassThroughOnly</passability>
+    <pathCost>75</pathCost>
+    <fillPercent>0.75</fillPercent>
+    <hasTooltip>true</hasTooltip>
+    <terrainAffordanceNeeded>Heavy</terrainAffordanceNeeded>
+    <designationCategory>Security</designationCategory>
+    <constructionSkillPrerequisite>10</constructionSkillPrerequisite>
+    <building>
+      <ai_combatDangerous>true</ai_combatDangerous>
+      <turretTopDrawSize>5</turretTopDrawSize>
+      <turretTopOffset>(-0.1, 0.8)</turretTopOffset>
+    </building>
+    <placeWorkers>
+      <li>PlaceWorker_TurretTop</li>
+      <!--<li>PlaceWorker_ShowTurretRadius</li>-->
+    </placeWorkers>
+    <designationHotKey>Misc3</designationHotKey>    
+    <uiIconScale>0.95</uiIconScale>
+    <comps>
+      <li Class="CompProperties_Stunnable">
+        <affectedDamageDefs>
+          <li>Stun</li>
+          <li>EMP</li>
+        </affectedDamageDefs>
+      </li>
+    </comps>
+  </ThingDef>
+
+  <ThingDef ParentName="FuelElectricityTurret">
+    <defName>Turret_ElectricalBeam</defName>
+    <label>Energy Cannon</label>
+    <description>Energy Cannon unleashes a devastating energy blast that destroys enemy targets with lethal precision.</description>
+    <uiIconPath>Things/Building/Security/OrbitalBeam_Turret</uiIconPath>
+    <statBases>
+      <ShootingAccuracyTurret>0.98</ShootingAccuracyTurret>
+    </statBases>
+    <techLevel>Ultra</techLevel>
+    <costList>
+      <Steel>1200</Steel>
+      <Plasteel>150</Plasteel>
+      <ComponentIndustrial>12</ComponentIndustrial>
+      <ComponentSpacer>4</ComponentSpacer>
+    </costList>
+    <comps>
+      <li Class="CompProperties_Explosive">
+        <wickTicks>240</wickTicks>
+        <explosiveRadius>7.9</explosiveRadius>
+        <explosiveDamageType>Bomb</explosiveDamageType>
+        <chanceNeverExplodeFromDamage>0.1</chanceNeverExplodeFromDamage>
+      </li>
+      <li Class="CompProperties_Forbiddable"/>
+      <li Class="CompProperties_Power">
+        <compClass>CompPowerTrader</compClass>
+        <basePowerConsumption>400</basePowerConsumption>
+      </li>
+      <li Class="CompProperties_Flickable"/>
+      <li Class="CompProperties_Breakdownable"/>
+	  <li Class="FuelElectricityTurretMod.CompProperties_Chargeable">
+		<chargeCapacity>4000</chargeCapacity>
+		<consumptionPerShoot>370</consumptionPerShoot>
+		<initialChargePercent>0.15</initialChargePercent>
+		<efficiency>1</efficiency>
+		<netPowerconsumptioOnCharge>2000</netPowerconsumptioOnCharge>
+	  </li>
+    </comps>
+    <building>
+      <turretGunDef>Gun_OrbitalBeam</turretGunDef>
+      <turretBurstCooldownTime>3</turretBurstCooldownTime>
+    </building>
+	<researchPrerequisites>
+	  <li>ElectricalArmamentResearch</li>
+	</researchPrerequisites>
+  </ThingDef>
+  
+<ThingDef ParentName="BaseWeaponTurret">
+    <defName>Gun_OrbitalBeam</defName>
+    <label>Energy Cannon</label>
+    <description>A self-loading large-bore cannon designed to attach to a turret.</description>
+    <graphicData>
+      <texPath>Things/Building/Security/OrbitalBeam_Turret</texPath>
+      <graphicClass>Graphic_Single</graphicClass>
+    </graphicData>
+    <statBases>
+      <AccuracyTouch>0.1</AccuracyTouch>
+      <AccuracyShort>0.75</AccuracyShort>
+      <AccuracyMedium>0.85</AccuracyMedium>
+      <AccuracyLong>0.78</AccuracyLong>
+      <RangedWeapon_Cooldown>3</RangedWeapon_Cooldown>
+      <DeteriorationRate>0</DeteriorationRate>
+      <Mass>150</Mass>
+      <Flammability>0</Flammability>
+    </statBases>
+    <verbs>
+      <li>
+        <verbClass>Verb_ShootBeam</verbClass>
+        <hasStandardCommand>true</hasStandardCommand>
+        <warmupTime>1.0</warmupTime>
+        <range>45</range>
+        <minRange>5</minRange>
+        <beamFullWidthRange>9</beamFullWidthRange>
+        <burstShotCount>8</burstShotCount>
+        <showBurstShotStats>false</showBurstShotStats>
+        <beamWidth>8</beamWidth>
+        <ticksBetweenBurstShots>22</ticksBetweenBurstShots>
+        <beamDamageDef>Beam</beamDamageDef>
+        <soundCastTail>GunTail_Medium</soundCastTail>
+        <muzzleFlashScale>9</muzzleFlashScale>
+        <soundCastBeam>BeamGraser_Shooting</soundCastBeam>
+        <beamGroundFleckDef>Fleck_BeamBurn</beamGroundFleckDef>
+        <beamFleckChancePerTick>0.33</beamFleckChancePerTick>
+        <beamMaxDeviation>1.5</beamMaxDeviation>
+        <beamCurvature>0.7</beamCurvature>
+        <beamMoteDef>Mote_GraserBeamBase</beamMoteDef>
+        <beamEndEffecterDef>GraserBeam_End</beamEndEffecterDef>
+        <beamChanceToStartFire>0.85</beamChanceToStartFire>
+        <beamChanceToAttachFire>0.85</beamChanceToAttachFire>
+        <beamFireSizeRange>0.55~0.88</beamFireSizeRange>
+        <beamLineFleckDef>Fleck_BeamSpark</beamLineFleckDef>
+        <beamStartOffset>0.8</beamStartOffset>
+        <highlightColor>(1,1,1,1)</highlightColor>
+        <secondaryHighlightColor>(0.5,0.5,0.5,1)</secondaryHighlightColor>
+        <beamTargetsGround>true</beamTargetsGround>
+        <beamHitsNeighborCells>true</beamHitsNeighborCells>
+        <beamLineFleckChanceCurve>
+          <points>
+            <li>(0, 0)</li>
+            <li>(0.65, 0.4)</li>
+            <li>(1, 0.75)</li>
+          </points>
+        </beamLineFleckChanceCurve>
+      </li>
+    </verbs>
+    <weaponTags>
+      <li>BeamGraserGun</li>
+    </weaponTags>
+  </ThingDef>
+</Defs>

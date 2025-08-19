@@ -1,0 +1,6 @@
+D:\SteamLibrary\steamapps\common\RimWorld\Mods\FuelElectricityTurretMod\Assemblies\FuelElectricityTurretMod.dll
+D:\SteamLibrary\steamapps\common\RimWorld\Mods\FuelElectricityTurretMod\Source\obj\Debug\FuelElectricityTurretMod.csproj.AssemblyReference.cache
+D:\SteamLibrary\steamapps\common\RimWorld\Mods\FuelElectricityTurretMod\Source\obj\Debug\FuelElectricityTurretMod.csproj.CoreCompileInputs.cache
+D:\SteamLibrary\steamapps\common\RimWorld\Mods\FuelElectricityTurretMod\Source\obj\Debug\FuelElec.3216273E.Up2Date
+D:\SteamLibrary\steamapps\common\RimWorld\Mods\FuelElectricityTurretMod\Source\obj\Debug\FuelElectricityTurretMod.dll
+D:\SteamLibrary\steamapps\common\RimWorld\Mods\FuelElectricityTurretMod\1.6\Assemblies\FuelElectricityTurretMod.dll
