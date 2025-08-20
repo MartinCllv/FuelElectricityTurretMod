@@ -90,12 +90,24 @@
       <li Class="CompProperties_Flickable"/>
       <li Class="CompProperties_Breakdownable"/>
 	  <li Class="FuelElectricityTurretMod.CompProperties_Chargeable">
-		<chargeCapacity>4000</chargeCapacity>
-		<consumptionPerShoot>370</consumptionPerShoot>
-		<initialChargePercent>0.15</initialChargePercent>
-		<efficiency>1</efficiency>
-		<netPowerconsumptioOnCharge>2000</netPowerconsumptioOnCharge>
+      <chargeCapacity>4000</chargeCapacity>
+      <consumptionPerShoot>370</consumptionPerShoot>
+      <initialChargePercent>0.15</initialChargePercent>
+      <efficiency>1</efficiency>
+		  <netPowerconsumptioOnCharge>2000</netPowerconsumptioOnCharge>
 	  </li>
+    <!-- <li Class="FuelElectricityTurretMod.CompElectricalChargable">
+      <ChargeRateIncrement>
+        <uiIconPath>UI/Increase_ChargeUI</uiIconPath>
+        <uiIconAngle>0</uiIconAngle>
+        <uiIconOffset>0</uiIconOffset>
+      </ChargeRateIncrement>
+      <ChargeRateDecrement>
+        <uiIconPath>UI/Decrease_ChargeUI</uiIconPath>
+        <uiIconAngle>0</uiIconAngle>
+        <uiIconOffset>0</uiIconOffset>
+      </ChargeRateDecrement>
+    </li> -->
     </comps>
     <building>
       <turretGunDef>Gun_OrbitalBeam</turretGunDef>

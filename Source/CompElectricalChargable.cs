@@ -16,11 +16,27 @@ namespace FuelElectricityTurretMod
 
         public float Charge = 1f;
 
-        public float NetPowerconsumptioOnCharge => this.Props.netPowerconsumptioOnCharge;
+        public float NetPowerconsumptioOnCharge => Props.netPowerconsumptioOnCharge;
 
         public float ConsumptionPerShoot => this.Props.consumptionPerShoot;
 
         public float ChargeCapacity => this.Props.chargeCapacity;
+
+        public ThingDef ChargeRateIncrement;
+        public ThingDef ChargeRateDecrement;
+
+        public void IncreaseChargeRate()
+        {
+            Props.netPowerconsumptioOnCharge += Props.chargeRateStep;
+        }
+        public void DecreaseChargeRate()
+        {
+            if (!(Props.netPowerconsumptioOnCharge - Props.chargeRateStep < 0f))
+            {
+                Props.netPowerconsumptioOnCharge -= Props.chargeRateStep;
+            }
+        }
+
         public float CurrentChargePercent
         {
             get

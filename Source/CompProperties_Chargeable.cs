@@ -15,6 +15,7 @@ namespace FuelElectricityTurretMod
         public float initialChargePercent = 0.5f;
         public float netPowerconsumptioOnCharge = 2f;
         public float efficiency = 1f;
+        public float chargeRateStep = 10f;
 
         public CompProperties_Chargeable() => this.compClass = typeof(CompElectricalChargable);
 

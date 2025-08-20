@@ -51,13 +51,38 @@ namespace FuelElectricityTurretMod
         }
         public override IEnumerable<Gizmo> GetGizmos()
         {
+            CompElectricalChargable Props = GetComp<CompElectricalChargable>();
             foreach (Gizmo gizmo in base.GetGizmos())
             {
                 yield return gizmo;
             }
+            Command_Action command_Action = new Command_Action();
+            command_Action.defaultLabel = "Increse charge rate.".ToString();
+            command_Action.defaultDesc = "Increases the turret's power draw to accelerate battery charging, reducing cooldown between shots at the cost of higher energy consumption.".ToString();
+            //command_Action.icon = Props.ChargeRateIncrement.uiIcon;
+            //command_Action.iconAngle = Props.ChargeRateIncrement.uiIconAngle;
+            //command_Action.iconOffset = Props.ChargeRateIncrement.uiIconOffset;
+            //command_Action.iconDrawScale = GenUI.IconDrawScale(Props.ChargeRateIncrement);
+            command_Action.action = delegate
+            {
+                GetComp<CompElectricalChargable>().IncreaseChargeRate();
+            };
+            yield return command_Action;
 
-
+            command_Action = new Command_Action();
+            command_Action.defaultLabel = "Decrease charge rate.".ToString();
+            command_Action.defaultDesc = "Reduces the turret’s power usage, but slows battery charging, increasing the cooldown between shots.".ToString();
+            //command_Action.icon = Props.ChargeRateDecrement.uiIcon;
+            //command_Action.iconAngle = Props.ChargeRateDecrement.uiIconAngle;
+            //command_Action.iconOffset = Props.ChargeRateDecrement.uiIconOffset;
+            //command_Action.iconDrawScale = GenUI.IconDrawScale(Props.ChargeRateDecrement);
+            command_Action.action = delegate
+            {
+                GetComp<CompElectricalChargable>().DecreaseChargeRate();
+            };
+            yield return command_Action;
         }
+
         public override string GetInspectString()
         {
             int remaining_shoots = (int)(GetComp<CompElectricalChargable>().Charge / GetComp<CompElectricalChargable>().ConsumptionPerShoot);
