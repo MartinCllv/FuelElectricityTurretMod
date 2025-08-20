@@ -22,8 +22,8 @@ namespace FuelElectricityTurretMod
 
         public float ChargeCapacity => this.Props.chargeCapacity;
 
-        public ThingDef ChargeRateIncrement;
-        public ThingDef ChargeRateDecrement;
+        //public ThingDef ChargeRateIncrement;
+        //public ThingDef ChargeRateDecrement;
 
         public void IncreaseChargeRate()
         {

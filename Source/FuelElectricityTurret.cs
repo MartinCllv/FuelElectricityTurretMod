@@ -24,6 +24,10 @@ namespace FuelElectricityTurretMod
         private Material RedUnfilledMat;
         private float blinkTimer = 0f;
         public Thing internalBattery;
+        private int remainingShoots
+        {
+            get { return (int)(GetComp<CompElectricalChargable>().Charge / GetComp<CompElectricalChargable>().ConsumptionPerShoot); }   
+        }
         protected override void Tick()
         {
             CompProperties_Power props = this.powerComp.Props;
@@ -59,7 +63,7 @@ namespace FuelElectricityTurretMod
             Command_Action command_Action = new Command_Action();
             command_Action.defaultLabel = "Increse charge rate.".ToString();
             command_Action.defaultDesc = "Increases the turret's power draw to accelerate battery charging, reducing cooldown between shots at the cost of higher energy consumption.".ToString();
-            //command_Action.icon = Props.ChargeRateIncrement.uiIcon;
+            command_Action.icon = ContentFinder<Texture2D>.Get("UI/Increase_ChargeUI");
             //command_Action.iconAngle = Props.ChargeRateIncrement.uiIconAngle;
             //command_Action.iconOffset = Props.ChargeRateIncrement.uiIconOffset;
             //command_Action.iconDrawScale = GenUI.IconDrawScale(Props.ChargeRateIncrement);
@@ -72,7 +76,7 @@ namespace FuelElectricityTurretMod
             command_Action = new Command_Action();
             command_Action.defaultLabel = "Decrease charge rate.".ToString();
             command_Action.defaultDesc = "Reduces the turret’s power usage, but slows battery charging, increasing the cooldown between shots.".ToString();
-            //command_Action.icon = Props.ChargeRateDecrement.uiIcon;
+            command_Action.icon = ContentFinder<Texture2D>.Get("UI/Decrease_ChargeUI");
             //command_Action.iconAngle = Props.ChargeRateDecrement.uiIconAngle;
             //command_Action.iconOffset = Props.ChargeRateDecrement.uiIconOffset;
             //command_Action.iconDrawScale = GenUI.IconDrawScale(Props.ChargeRateDecrement);
@@ -85,14 +89,20 @@ namespace FuelElectricityTurretMod
 
         public override string GetInspectString()
         {
-            int remaining_shoots = (int)(GetComp<CompElectricalChargable>().Charge / GetComp<CompElectricalChargable>().ConsumptionPerShoot);
+            string str = "Not Charging";
+            if (Active)
+            {
+                str = "Charging at " + GetComp<CompElectricalChargable>().NetPowerconsumptioOnCharge.ToString("F0") + " W";
+            }
             StringBuilder stringBuilder = new StringBuilder();
             string inspectString = base.GetInspectString();
             if (!inspectString.NullOrEmpty())
             {
                 stringBuilder.AppendLine(inspectString);
             }
-            stringBuilder.AppendLine("PowerBatteryStored".Translate() + ": " + GetComp<CompElectricalChargable>().Charge.ToString("F0") + " / " + GetComp<CompElectricalChargable>().ChargeCapacity.ToString("F0") + "\n" + "Charging at " + GetComp<CompElectricalChargable>().NetPowerconsumptioOnCharge.ToString("F0") + " W" + "\n" + "Remaining Shoots: " + remaining_shoots.ToString("F0"));
+            stringBuilder.AppendLine("PowerBatteryStored".Translate() + ": " + GetComp<CompElectricalChargable>().Charge.ToString("F0") + " / " + GetComp<CompElectricalChargable>().ChargeCapacity.ToString("F0"));
+            stringBuilder.AppendLine(str);
+            stringBuilder.AppendLine("Remaining Shoots: " + remainingShoots.ToString("F0"));
             return stringBuilder.ToString().TrimEndNewlines();
         }
 
