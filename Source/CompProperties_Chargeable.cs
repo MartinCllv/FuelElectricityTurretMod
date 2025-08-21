@@ -13,7 +13,7 @@ namespace FuelElectricityTurretMod
         public float chargeCapacity = 4f;
         public float consumptionPerShoot = 1f;
         public float initialChargePercent = 0.5f;
-        public float netPowerconsumptioOnCharge = 2f;
+        public float netPowerconsumptioOnCharge;
         public float efficiency = 1f;
         public float chargeRateStep = 10f;
 

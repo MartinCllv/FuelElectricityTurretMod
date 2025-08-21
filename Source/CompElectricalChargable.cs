@@ -15,7 +15,7 @@ namespace FuelElectricityTurretMod
         public float EnergyChargePerTick => (this.Props.netPowerconsumptioOnCharge / 60000f) * this.Props.efficiency;
 
         public float Charge = 1f;
-
+            
         public float NetPowerconsumptioOnCharge => Props.netPowerconsumptioOnCharge;
 
         public float ConsumptionPerShoot => this.Props.consumptionPerShoot;
@@ -25,6 +25,12 @@ namespace FuelElectricityTurretMod
         //public ThingDef ChargeRateIncrement;
         //public ThingDef ChargeRateDecrement;
 
+        public override void PostExposeData()
+        {
+            base.PostExposeData();
+            Scribe_Values.Look(ref this.Charge, "ChargeStored", 1f);
+            Scribe_Values.Look(ref this.Props.netPowerconsumptioOnCharge, "NetPowerConsumptionOnCharge", 200f);
+        }
         public void IncreaseChargeRate()
         {
             Props.netPowerconsumptioOnCharge += Props.chargeRateStep;
@@ -61,11 +67,6 @@ namespace FuelElectricityTurretMod
                 return ((double)this.ChargeCapacity - (double)this.Charge) <= 0;
             }
         }
-        public override void PostExposeData()
-        {
-            base.PostExposeData();
-            Scribe_Values.Look<float>(ref this.Charge, "ChargeStored");
-        }
         public void DecreseCharge()
         {
             this.Charge -= this.Props.consumptionPerShoot;
@@ -75,9 +76,14 @@ namespace FuelElectricityTurretMod
             this.Charge += this.EnergyChargePerTick;
         }
 
-        public void Init()
+        public float Init(string str)
         {
-            this.Charge = this.Props.initialChargePercent * this.Props.chargeCapacity;
+            if (str == "ChargeStored")
+            {
+                this.Charge = this.Props.initialChargePercent * this.Props.chargeCapacity;
+                return this.Charge;
+            }
+            return 0f;
         }
 
     }

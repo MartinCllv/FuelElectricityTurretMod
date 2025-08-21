@@ -17,72 +17,77 @@ namespace FuelElectricityTurretMod
 {
     public class Electricity_Turret : Building_TurretGun
     {
+        protected CompElectricalChargable electricalCompChargable => GetComp<CompElectricalChargable>();
         private static readonly Vector2 BarSize = new Vector2(2.8f, 2.8f);
         private static readonly Material BarBackunfilledMat = SolidColorMaterials.SimpleSolidColorMaterial(new Color(0.3f, 0.3f, 0.3f));
         private Material BarUnfilledMat;
         private Material blinkMaterial;
         private Material RedUnfilledMat;
         private float blinkTimer = 0f;
-        public Thing internalBattery;
-        private int remainingShoots
+        private int RemainingShoots
         {
-            get { return (int)(GetComp<CompElectricalChargable>().Charge / GetComp<CompElectricalChargable>().ConsumptionPerShoot); }   
+            get { return (int)(electricalCompChargable.Charge / electricalCompChargable.ConsumptionPerShoot); }   
         }
         protected override void Tick()
         {
             CompProperties_Power props = this.powerComp.Props;
             base.Tick();
-            if (this.Active & !GetComp<CompElectricalChargable>().IsFullCharged)
+            if (this.Active & !electricalCompChargable.IsFullCharged)
             {
-                this.powerComp.PowerOutput = -(props.PowerConsumption + GetComp<CompElectricalChargable>().NetPowerconsumptioOnCharge);
-                GetComp<CompElectricalChargable>().AccumulateCharge();
+                this.powerComp.PowerOutput = -(props.PowerConsumption + electricalCompChargable.NetPowerconsumptioOnCharge);
+                electricalCompChargable.AccumulateCharge();
             }
             else {this.powerComp.PowerOutput = -props.PowerConsumption;}
         }
         public override void SpawnSetup(Map map, bool respawningAfterLoad)
         {
+            if (!respawningAfterLoad)
+            {
+                electricalCompChargable.Init("ChargeStored");
+            }
             base.SpawnSetup(map, respawningAfterLoad);
-            GetComp<CompElectricalChargable>().Init();
+
         }
 
         protected override void BeginBurst()
         {
-            if (GetComp<CompElectricalChargable>().HasChargeToShoot)
+            if (electricalCompChargable.HasChargeToShoot)
             {
                 base.BeginBurst();
-                GetComp<CompElectricalChargable>().DecreseCharge();
+                electricalCompChargable.DecreseCharge();
             }
         }
+
         public override IEnumerable<Gizmo> GetGizmos()
         {
-            CompElectricalChargable Props = GetComp<CompElectricalChargable>();
+            CompElectricalChargable Props = electricalCompChargable;
             foreach (Gizmo gizmo in base.GetGizmos())
             {
                 yield return gizmo;
             }
             Command_Action command_Action = new Command_Action();
-            command_Action.defaultLabel = "Increse charge rate.".ToString();
+            command_Action.defaultLabel = "Increse charge rate".ToString();
             command_Action.defaultDesc = "Increases the turret's power draw to accelerate battery charging, reducing cooldown between shots at the cost of higher energy consumption.".ToString();
             command_Action.icon = ContentFinder<Texture2D>.Get("UI/Increase_ChargeUI");
-            //command_Action.iconAngle = Props.ChargeRateIncrement.uiIconAngle;
-            //command_Action.iconOffset = Props.ChargeRateIncrement.uiIconOffset;
-            //command_Action.iconDrawScale = GenUI.IconDrawScale(Props.ChargeRateIncrement);
+            //command_Action.iconAngle = electricalCompChargable.ChargeRateIncrement.uiIconAngle;
+            //command_Action.iconOffset = electricalCompChargable.ChargeRateIncrement.uiIconOffset;
+            //command_Action.iconDrawScale = GenUI.IconDrawScale(electricalCompChargable.ChargeRateIncrement);
             command_Action.action = delegate
             {
-                GetComp<CompElectricalChargable>().IncreaseChargeRate();
+                electricalCompChargable.IncreaseChargeRate();
             };
             yield return command_Action;
 
             command_Action = new Command_Action();
-            command_Action.defaultLabel = "Decrease charge rate.".ToString();
+            command_Action.defaultLabel = "Decrease charge rate".ToString();
             command_Action.defaultDesc = "Reduces the turret’s power usage, but slows battery charging, increasing the cooldown between shots.".ToString();
             command_Action.icon = ContentFinder<Texture2D>.Get("UI/Decrease_ChargeUI");
-            //command_Action.iconAngle = Props.ChargeRateDecrement.uiIconAngle;
-            //command_Action.iconOffset = Props.ChargeRateDecrement.uiIconOffset;
-            //command_Action.iconDrawScale = GenUI.IconDrawScale(Props.ChargeRateDecrement);
+            //command_Action.iconAngle = electricalCompChargable.ChargeRateDecrement.uiIconAngle;
+            //command_Action.iconOffset = electricalCompChargable.ChargeRateDecrement.uiIconOffset;
+            //command_Action.iconDrawScale = GenUI.IconDrawScale(electricalCompChargable.ChargeRateDecrement);
             command_Action.action = delegate
             {
-                GetComp<CompElectricalChargable>().DecreaseChargeRate();
+                electricalCompChargable.DecreaseChargeRate();
             };
             yield return command_Action;
         }
@@ -92,7 +97,7 @@ namespace FuelElectricityTurretMod
             string str = "Not Charging";
             if (Active)
             {
-                str = "Charging at " + GetComp<CompElectricalChargable>().NetPowerconsumptioOnCharge.ToString("F0") + " W";
+                str = "Charging at " + electricalCompChargable.NetPowerconsumptioOnCharge.ToString("F0") + " W";
             }
             StringBuilder stringBuilder = new StringBuilder();
             string inspectString = base.GetInspectString();
@@ -100,9 +105,9 @@ namespace FuelElectricityTurretMod
             {
                 stringBuilder.AppendLine(inspectString);
             }
-            stringBuilder.AppendLine("PowerBatteryStored".Translate() + ": " + GetComp<CompElectricalChargable>().Charge.ToString("F0") + " / " + GetComp<CompElectricalChargable>().ChargeCapacity.ToString("F0"));
+            stringBuilder.AppendLine("PowerBatteryStored".Translate() + ": " + electricalCompChargable.Charge.ToString("F0") + " / " + electricalCompChargable.ChargeCapacity.ToString("F0"));
             stringBuilder.AppendLine(str);
-            stringBuilder.AppendLine("Remaining Shoots: " + remainingShoots.ToString("F0"));
+            stringBuilder.AppendLine("Remaining Shoots: " + RemainingShoots.ToString("F0"));
             return stringBuilder.ToString().TrimEndNewlines();
         }
 
@@ -110,7 +115,7 @@ namespace FuelElectricityTurretMod
         {
             BarUnfilledMat = SolidColorMaterials.SimpleSolidColorMaterial(new Color(0.35f, 0.35f, 0.35f));
             RedUnfilledMat = SolidColorMaterials.SimpleSolidColorMaterial(new Color(0.6f, 0.25f, 0.25f));
-            if (!GetComp<CompElectricalChargable>().HasChargeToShoot)
+            if (!electricalCompChargable.HasChargeToShoot)
             {
                 if (blinkMaterial == null)
                 {
@@ -137,7 +142,7 @@ namespace FuelElectricityTurretMod
 
         private Material PickColorFilledMat()
         {
-            if (GetComp<CompElectricalChargable>().HasChargeToShoot)
+            if (electricalCompChargable.HasChargeToShoot)
             {
                 return SolidColorMaterials.SimpleSolidColorMaterial(new Color(0.9f, 0.85f, 0.2f));
             }
@@ -173,7 +178,7 @@ namespace FuelElectricityTurretMod
             {
                 center = drawLoc + Vector3.down * 0.03f,
                 size = Electricity_Turret.BarSize,
-                fillPercent = GetComp<CompElectricalChargable>().CurrentChargePercent,
+                fillPercent = electricalCompChargable.CurrentChargePercent,
                 filledMat = PickColorFilledMat(),
                 unfilledMat = PickColorUnFilledMat(),
                 unfilledMatBack = Electricity_Turret.BarBackunfilledMat,

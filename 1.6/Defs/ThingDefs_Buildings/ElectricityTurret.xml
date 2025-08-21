@@ -160,7 +160,7 @@
           <beamGroundFleckDef>Fleck_BeamBurn</beamGroundFleckDef>
           <beamFleckChancePerTick>0.33</beamFleckChancePerTick>
           <beamMaxDeviation>1.5</beamMaxDeviation>
-          <beamCurvature>0.7</beamCurvature>
+          <beamCurvature>0.6</beamCurvature>
           <beamMoteDef>Mote_GraserBeamBase</beamMoteDef>
           <beamEndEffecterDef>GraserBeam_End</beamEndEffecterDef>
           <beamChanceToStartFire>0.85</beamChanceToStartFire>
