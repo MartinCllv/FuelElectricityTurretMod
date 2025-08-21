@@ -46,6 +46,7 @@
     <placeWorkers>
       <li>PlaceWorker_TurretTop</li>
       <li>PlaceWorker_ShowTurretRadius</li>
+      <li>PlaceWorker_NotUnderRoof</li>
     </placeWorkers>
     <designationHotKey>Misc3</designationHotKey>    
     <uiIconScale>0.95</uiIconScale>

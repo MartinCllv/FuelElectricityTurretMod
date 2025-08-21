@@ -18,8 +18,7 @@
         <volume>(1.5,0.35,1.4)</volume>
         <offset>(0,0,-0.05)</offset>
       </shadowData>
-    </graphicData>  
-	<!--<altitudeLayer>Darkness</altitudeLayer>-->
+    </graphicData>
     <altitudeLayer>MoteOverhead</altitudeLayer>
     <stealable>false</stealable>
     <rotatable>false</rotatable>
@@ -46,7 +45,8 @@
     </building>
     <placeWorkers>
       <li>PlaceWorker_TurretTop</li>
-      <!--<li>PlaceWorker_ShowTurretRadius</li>-->
+      <!-- <li>PlaceWorker_ShowTurretRadius</li> -->
+      <li>PlaceWorker_NotUnderRoof</li>
     </placeWorkers>
     <designationHotKey>Misc3</designationHotKey>    
     <uiIconScale>0.95</uiIconScale>
@@ -85,34 +85,22 @@
       <li Class="CompProperties_Forbiddable"/>
       <li Class="CompProperties_Power">
         <compClass>CompPowerTrader</compClass>
-        <basePowerConsumption>400</basePowerConsumption>
+        <basePowerConsumption>220</basePowerConsumption>
       </li>
       <li Class="CompProperties_Flickable"/>
       <li Class="CompProperties_Breakdownable"/>
-	  <li Class="FuelElectricityTurretMod.CompProperties_Chargeable">
-      <chargeCapacity>4000</chargeCapacity>
-      <consumptionPerShoot>370</consumptionPerShoot>
-      <initialChargePercent>0.15</initialChargePercent>
-      <efficiency>1</efficiency>
-		  <netPowerconsumptioOnCharge>2000</netPowerconsumptioOnCharge>
-      <chargeRateStep>100</chargeRateStep>
+      <li Class="FuelElectricityTurretMod.CompProperties_Chargeable">
+        <chargeCapacity>4000</chargeCapacity>
+        <consumptionPerShoot>280</consumptionPerShoot>
+        <initialChargePercent>1.00</initialChargePercent>
+        <efficiency>1</efficiency>
+        <netPowerconsumptioOnCharge>2000</netPowerconsumptioOnCharge>
+        <chargeRateStep>100</chargeRateStep>
 	  </li>
-    <!-- <li Class="FuelElectricityTurretMod.CompElectricalChargable">
-      <ChargeRateIncrement>
-        <uiIconPath>UI/Increase_ChargeUI</uiIconPath>
-        <uiIconAngle>0</uiIconAngle>
-        <uiIconOffset>0</uiIconOffset>
-      </ChargeRateIncrement>
-      <ChargeRateDecrement>
-        <uiIconPath>UI/Decrease_ChargeUI</uiIconPath>
-        <uiIconAngle>0</uiIconAngle>
-        <uiIconOffset>0</uiIconOffset>
-      </ChargeRateDecrement>
-    </li> -->
     </comps>
     <building>
       <turretGunDef>Gun_OrbitalBeam</turretGunDef>
-      <turretBurstCooldownTime>3</turretBurstCooldownTime>
+      <turretBurstCooldownTime>2</turretBurstCooldownTime>
     </building>
 	<researchPrerequisites>
 	  <li>ElectricalArmamentResearch</li>
@@ -122,6 +110,7 @@
   <ThingDef ParentName="ThingComp">
     <defName>Turret_ElectricalBeam</defName>
   </ThingDef> -->
+
 
   <ThingDef ParentName="BaseWeaponTurret">
       <defName>Gun_OrbitalBeam</defName>
@@ -133,10 +122,10 @@
       </graphicData>
       <statBases>
         <AccuracyTouch>0.1</AccuracyTouch>
-        <AccuracyShort>0.75</AccuracyShort>
-        <AccuracyMedium>0.85</AccuracyMedium>
-        <AccuracyLong>0.78</AccuracyLong>
-        <RangedWeapon_Cooldown>3</RangedWeapon_Cooldown>
+        <AccuracyShort>0.8</AccuracyShort>
+        <AccuracyMedium>0.9</AccuracyMedium>
+        <AccuracyLong>0.85</AccuracyLong>
+        <RangedWeapon_Cooldown>2</RangedWeapon_Cooldown>
         <DeteriorationRate>0</DeteriorationRate>
         <Mass>150</Mass>
         <Flammability>0</Flammability>
@@ -149,16 +138,16 @@
           <range>45</range>
           <minRange>5</minRange>
           <beamFullWidthRange>9</beamFullWidthRange>
-          <burstShotCount>8</burstShotCount>
+          <burstShotCount>30</burstShotCount>
           <showBurstShotStats>false</showBurstShotStats>
-          <beamWidth>8</beamWidth>
-          <ticksBetweenBurstShots>22</ticksBetweenBurstShots>
+          <beamWidth>4</beamWidth>
+          <ticksBetweenBurstShots>10</ticksBetweenBurstShots>
           <beamDamageDef>Beam</beamDamageDef>
           <soundCastTail>GunTail_Medium</soundCastTail>
           <muzzleFlashScale>9</muzzleFlashScale>
           <soundCastBeam>BeamGraser_Shooting</soundCastBeam>
           <beamGroundFleckDef>Fleck_BeamBurn</beamGroundFleckDef>
-          <beamFleckChancePerTick>0.33</beamFleckChancePerTick>
+          <beamFleckChancePerTick>0.2</beamFleckChancePerTick>
           <beamMaxDeviation>1.5</beamMaxDeviation>
           <beamCurvature>0.6</beamCurvature>
           <beamMoteDef>Mote_GraserBeamBase</beamMoteDef>
@@ -167,10 +156,10 @@
           <beamChanceToAttachFire>0.85</beamChanceToAttachFire>
           <beamFireSizeRange>0.55~0.88</beamFireSizeRange>
           <beamLineFleckDef>Fleck_BeamSpark</beamLineFleckDef>
-          <beamStartOffset>0.8</beamStartOffset>
+          <beamStartOffset>0.1</beamStartOffset>
           <highlightColor>(1,1,1,1)</highlightColor>
           <secondaryHighlightColor>(0.5,0.5,0.5,1)</secondaryHighlightColor>
-          <beamTargetsGround>true</beamTargetsGround>
+          <beamTargetsGround>false</beamTargetsGround>
           <beamHitsNeighborCells>true</beamHitsNeighborCells>
           <beamLineFleckChanceCurve>
             <points>
