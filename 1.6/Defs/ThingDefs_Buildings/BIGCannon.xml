@@ -19,7 +19,7 @@
         <offset>(0,0,-0.05)</offset>
       </shadowData>
     </graphicData>    
-    <altitudeLayer>MoteOverhead</altitudeLayer>
+    <altitudeLayer>BuildingOnTop</altitudeLayer>
     <stealable>false</stealable>
     <rotatable>false</rotatable>
     <size>(3,3)</size>
@@ -133,8 +133,9 @@
     <projectile>
       <damageDef>Bomb</damageDef>
       <!-- Use default damage from explosion def -->
-      <explosionRadius>2</explosionRadius>
+      <explosionRadius>2.5</explosionRadius>
       <speed>80</speed>
+      <stoppingPower>2.2</stoppingPower>
     </projectile>
      </ThingDef>
 

@@ -19,7 +19,7 @@
         <offset>(0,0,-0.05)</offset>
       </shadowData>
     </graphicData>
-    <altitudeLayer>MoteOverhead</altitudeLayer>
+    <altitudeLayer>BuildingOnTop</altitudeLayer>
     <stealable>false</stealable>
     <rotatable>false</rotatable>
     <size>(3,3)</size>
@@ -45,7 +45,7 @@
     </building>
     <placeWorkers>
       <li>PlaceWorker_TurretTop</li>
-      <!-- <li>PlaceWorker_ShowTurretRadius</li> -->
+      <li>FuelElectricityTurretMod.PlaceWorker_ShowTurretBeamRadius</li>
       <li>PlaceWorker_NotUnderRoof</li>
     </placeWorkers>
     <designationHotKey>Misc3</designationHotKey>    
@@ -111,6 +111,7 @@
     <defName>Turret_ElectricalBeam</defName>
   </ThingDef> -->
 
+  
 
   <ThingDef ParentName="BaseWeaponTurret">
       <defName>Gun_OrbitalBeam</defName>
@@ -137,12 +138,12 @@
           <warmupTime>1.0</warmupTime>
           <range>45</range>
           <minRange>5</minRange>
-          <beamFullWidthRange>9</beamFullWidthRange>
-          <burstShotCount>30</burstShotCount>
+          <beamFullWidthRange>2</beamFullWidthRange>
+          <burstShotCount>25</burstShotCount>
           <showBurstShotStats>false</showBurstShotStats>
           <beamWidth>4</beamWidth>
-          <ticksBetweenBurstShots>10</ticksBetweenBurstShots>
-          <beamDamageDef>Beam</beamDamageDef>
+          <ticksBetweenBurstShots>5</ticksBetweenBurstShots>
+          <beamDamageDef>DeathBeam</beamDamageDef>
           <soundCastTail>GunTail_Medium</soundCastTail>
           <muzzleFlashScale>9</muzzleFlashScale>
           <soundCastBeam>BeamGraser_Shooting</soundCastBeam>
@@ -152,14 +153,14 @@
           <beamCurvature>0.6</beamCurvature>
           <beamMoteDef>Mote_GraserBeamBase</beamMoteDef>
           <beamEndEffecterDef>GraserBeam_End</beamEndEffecterDef>
-          <beamChanceToStartFire>0.85</beamChanceToStartFire>
-          <beamChanceToAttachFire>0.85</beamChanceToAttachFire>
-          <beamFireSizeRange>0.55~0.88</beamFireSizeRange>
+          <beamChanceToStartFire>0.95</beamChanceToStartFire>
+          <beamChanceToAttachFire>0.9</beamChanceToAttachFire>
+          <beamFireSizeRange>1.8~2.5</beamFireSizeRange>
           <beamLineFleckDef>Fleck_BeamSpark</beamLineFleckDef>
           <beamStartOffset>0.1</beamStartOffset>
           <highlightColor>(1,1,1,1)</highlightColor>
           <secondaryHighlightColor>(0.5,0.5,0.5,1)</secondaryHighlightColor>
-          <beamTargetsGround>false</beamTargetsGround>
+          <beamTargetsGround>true</beamTargetsGround>
           <beamHitsNeighborCells>true</beamHitsNeighborCells>
           <beamLineFleckChanceCurve>
             <points>

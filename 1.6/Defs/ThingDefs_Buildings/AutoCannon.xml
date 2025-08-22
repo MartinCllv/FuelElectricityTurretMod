@@ -19,7 +19,7 @@
         <offset>(0,0,-0.05)</offset>
       </shadowData>
     </graphicData>  
-    <altitudeLayer>MoteOverhead</altitudeLayer>
+    <altitudeLayer>BuildingOnTop</altitudeLayer>
     <stealable>false</stealable>
     <rotatable>false</rotatable>
     <size>(3,3)</size>
@@ -134,8 +134,9 @@
     <projectile>
       <damageDef>Bullet</damageDef>
       <damageAmountBase>30</damageAmountBase>
-	  <armorPenetrationBase>0.60</armorPenetrationBase>
+	    <armorPenetrationBase>0.58</armorPenetrationBase>
       <speed>115</speed>
+      <stoppingPower>3.1</stoppingPower>
     </projectile>
   </ThingDef>
 

@@ -95,7 +95,7 @@ namespace FuelElectricityTurretMod
         public override string GetInspectString()
         {
             string str = "Not Charging";
-            if (Active)
+            if (Active & !electricalCompChargable.IsFullCharged)
             {
                 str = "Charging at " + electricalCompChargable.NetPowerconsumptioOnCharge.ToString("F0") + " W";
             }

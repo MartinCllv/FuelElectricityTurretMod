@@ -42,7 +42,6 @@ namespace FuelElectricityTurretMod
                 Props.netPowerconsumptioOnCharge -= Props.chargeRateStep;
             }
         }
-
         public float CurrentChargePercent
         {
             get
