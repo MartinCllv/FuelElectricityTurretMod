@@ -1,7 +1,7 @@
-<?xml version="1.0" encoding="utf-8" ?> 
+<?xml version="1.0" encoding="utf-8" ?>
 
 <Defs>
-  <ThingDef ParentName="BuildingBase" Name="GravShipTurret" Abstract="True"> 
+  <ThingDef ParentName="BuildingBase" Name="GravShipTurret" Abstract="True">
     <thingClass>Building_TurretGun</thingClass>
     <drawerType>MapMeshAndRealTime</drawerType>
     <drawHighlight>true</drawHighlight>
@@ -18,7 +18,7 @@
         <volume>(1.5,0.35,1.4)</volume>
         <offset>(0,0,-0.05)</offset>
       </shadowData>
-    </graphicData>    
+    </graphicData>
     <altitudeLayer>BuildingOnTop</altitudeLayer>
     <stealable>false</stealable>
     <rotatable>false</rotatable>
@@ -48,7 +48,7 @@
       <li>PlaceWorker_ShowTurretRadius</li>
       <li>PlaceWorker_NotUnderRoof</li>
     </placeWorkers>
-    <designationHotKey>Misc3</designationHotKey>    
+    <designationHotKey>Misc3</designationHotKey>
     <uiIconScale>0.95</uiIconScale>
     <comps>
       <li Class="CompProperties_Stunnable">
@@ -128,11 +128,9 @@
       <graphicClass>Graphic_Single</graphicClass>
       <shaderType>TransparentPostLight</shaderType>
     </graphicData>
-
     <thingClass>Projectile_Explosive</thingClass>
     <projectile>
       <damageDef>Bomb</damageDef>
-      <!-- Use default damage from explosion def -->
       <explosionRadius>2.5</explosionRadius>
       <speed>80</speed>
       <stoppingPower>2.2</stoppingPower>

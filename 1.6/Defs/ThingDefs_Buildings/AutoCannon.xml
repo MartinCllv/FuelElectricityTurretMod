@@ -129,7 +129,7 @@
     <graphicData>
       <texPath>Things/Projectile/Nice_big_bullet</texPath>
       <graphicClass>Graphic_Single</graphicClass>
-	  <drawSize>(5,5)</drawSize>
+	    <drawSize>(5,5)</drawSize>
     </graphicData>
     <projectile>
       <damageDef>Bullet</damageDef>

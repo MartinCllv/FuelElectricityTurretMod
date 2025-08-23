@@ -123,9 +123,9 @@
       </graphicData>
       <statBases>
         <AccuracyTouch>0.1</AccuracyTouch>
-        <AccuracyShort>0.8</AccuracyShort>
-        <AccuracyMedium>0.9</AccuracyMedium>
-        <AccuracyLong>0.85</AccuracyLong>
+        <AccuracyShort>0.85</AccuracyShort>
+        <AccuracyMedium>0.95</AccuracyMedium>
+        <AccuracyLong>0.9</AccuracyLong>
         <RangedWeapon_Cooldown>2</RangedWeapon_Cooldown>
         <DeteriorationRate>0</DeteriorationRate>
         <Mass>150</Mass>
@@ -135,33 +135,35 @@
         <li>
           <verbClass>Verb_ShootBeam</verbClass>
           <hasStandardCommand>true</hasStandardCommand>
+          <!-- <defaultProjectile>GravShip_Rocket</defaultProjectile> -->
           <warmupTime>1.0</warmupTime>
           <range>45</range>
           <minRange>5</minRange>
-          <beamFullWidthRange>2</beamFullWidthRange>
+          <beamFullWidthRange>6</beamFullWidthRange>
           <burstShotCount>25</burstShotCount>
           <showBurstShotStats>false</showBurstShotStats>
-          <beamWidth>4</beamWidth>
-          <ticksBetweenBurstShots>5</ticksBetweenBurstShots>
+          <beamWidth>20</beamWidth>
+          <ticksBetweenBurstShots>7</ticksBetweenBurstShots>
           <beamDamageDef>DeathBeam</beamDamageDef>
           <soundCastTail>GunTail_Medium</soundCastTail>
           <muzzleFlashScale>9</muzzleFlashScale>
-          <soundCastBeam>BeamGraser_Shooting</soundCastBeam>
-          <beamGroundFleckDef>Fleck_BeamBurn</beamGroundFleckDef>
+          <soundCastBeam>DeathBeamGraser_Shooting</soundCastBeam>
+          <beamGroundFleckDef>Fleck_DeathBeamBurn</beamGroundFleckDef>
           <beamFleckChancePerTick>0.2</beamFleckChancePerTick>
           <beamMaxDeviation>1.5</beamMaxDeviation>
           <beamCurvature>0.6</beamCurvature>
           <beamMoteDef>Mote_GraserBeamBase</beamMoteDef>
           <beamEndEffecterDef>GraserBeam_End</beamEndEffecterDef>
-          <beamChanceToStartFire>0.95</beamChanceToStartFire>
-          <beamChanceToAttachFire>0.9</beamChanceToAttachFire>
-          <beamFireSizeRange>1.8~2.5</beamFireSizeRange>
+          <beamChanceToStartFire>1</beamChanceToStartFire>
+          <beamChanceToAttachFire>1</beamChanceToAttachFire>
+          <beamFireSizeRange>4.1~4.5</beamFireSizeRange>
           <beamLineFleckDef>Fleck_BeamSpark</beamLineFleckDef>
           <beamStartOffset>0.1</beamStartOffset>
           <highlightColor>(1,1,1,1)</highlightColor>
           <secondaryHighlightColor>(0.5,0.5,0.5,1)</secondaryHighlightColor>
           <beamTargetsGround>true</beamTargetsGround>
           <beamHitsNeighborCells>true</beamHitsNeighborCells>
+          <beamHitsNeighborCellsRequiresLOS>false</beamHitsNeighborCellsRequiresLOS>
           <beamLineFleckChanceCurve>
             <points>
               <li>(0, 0)</li>

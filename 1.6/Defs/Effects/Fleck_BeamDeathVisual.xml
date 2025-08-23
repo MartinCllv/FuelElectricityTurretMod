@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<Defs>
+
+ <FleckDef ParentName="FleckBase_RandomGraphic_Thrown">
+    <defName>Fleck_DeathBeamBurn</defName>
+    <altitudeLayer>MoteLow</altitudeLayer>
+    <fadeInTime>0.1</fadeInTime>
+    <fadeOutTime>2</fadeOutTime>
+    <solidTime>8</solidTime>
+    <randomGraphics>
+      <li>
+        <graphicClass>Graphic_Fleck</graphicClass>
+        <texPath>Things/Mote/BeamBurn/BeamBurn_A</texPath>
+        <shaderType>Transparent</shaderType>
+        <drawSize>2.5</drawSize>
+      </li>
+      <li>
+        <graphicClass>Graphic_Fleck</graphicClass>
+        <texPath>Things/Mote/BeamBurn/BeamBurn_B</texPath>
+        <shaderType>Transparent</shaderType>
+        <drawSize>2.5</drawSize>
+      </li>
+      <li>
+        <graphicClass>Graphic_Fleck</graphicClass>
+        <texPath>Things/Mote/BeamBurn/BeamBurn_C</texPath>
+        <shaderType>Transparent</shaderType>
+        <drawSize>2.5</drawSize>
+      </li>
+    </randomGraphics>
+  </FleckDef>
+  
+</Defs>

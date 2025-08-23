@@ -47,6 +47,7 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Verb_DeathShootBeam.cs" />
     <Compile Include="PlaceWorker_ShowTurretBeamRadius.cs" />
     <Compile Include="CompElectricalChargable.cs" />
     <Compile Include="CompProperties_Chargeable.cs" />
