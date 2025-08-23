@@ -91,8 +91,8 @@
       <li Class="CompProperties_Breakdownable"/>
       <li Class="FuelElectricityTurretMod.CompProperties_Chargeable">
         <chargeCapacity>4000</chargeCapacity>
-        <consumptionPerShoot>280</consumptionPerShoot>
-        <initialChargePercent>1.00</initialChargePercent>
+        <consumptionPerShoot>420</consumptionPerShoot>
+        <initialChargePercent>0.20</initialChargePercent>
         <efficiency>1</efficiency>
         <netPowerconsumptioOnCharge>2000</netPowerconsumptioOnCharge>
         <chargeRateStep>100</chargeRateStep>
@@ -133,7 +133,7 @@
       </statBases>
       <verbs>
         <li>
-          <verbClass>Verb_ShootBeam</verbClass>
+          <verbClass>FuelElectricityTurretMod.Verb_DeathShootBeam</verbClass>
           <hasStandardCommand>true</hasStandardCommand>
           <!-- <defaultProjectile>GravShip_Rocket</defaultProjectile> -->
           <warmupTime>1.0</warmupTime>
@@ -164,6 +164,7 @@
           <beamTargetsGround>true</beamTargetsGround>
           <beamHitsNeighborCells>true</beamHitsNeighborCells>
           <beamHitsNeighborCellsRequiresLOS>false</beamHitsNeighborCellsRequiresLOS>
+          <soundLanding>Explosion_Vaporize</soundLanding>
           <beamLineFleckChanceCurve>
             <points>
               <li>(0, 0)</li>

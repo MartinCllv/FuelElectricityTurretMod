@@ -154,6 +154,9 @@ namespace FuelElectricityTurretMod
             Verb_DeathShootBeam verbShootBeam = this;
             if (verbShootBeam.verbProps.beamHitsNeighborCells)
             {
+                GenExplosion.DoExplosion(
+                    center: pos, map: verbShootBeam.Caster.Map, radius:3f, damType:this.verbProps.beamDamageDef, instigator: verbShootBeam.Caster,
+                    damAmount: 15, armorPenetration: 0.45f, explosionSound: this.verbProps.soundLanding, chanceToStartFire: 0.8f, damageFalloff: true);
                 for (int i = 0; i < 4; ++i)
                 {
                     IntVec3 hitNeighbourCell = pos + GenAdj.CardinalDirections[i];
