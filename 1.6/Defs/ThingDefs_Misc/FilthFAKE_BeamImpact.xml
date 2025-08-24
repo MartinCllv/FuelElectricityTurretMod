@@ -1,0 +1,28 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<Defs>
+
+  <ThingDef ParentName="BaseFilth">
+    <defName>Filth_BeamBlastMark</defName>
+    <label>beam blast mark</label>
+    <size>(2,2)</size>
+    <graphicData>
+      <graphicClass>Graphic_Random</graphicClass>
+      <texPath>Things/Filth/BlastMark</texPath>
+      <shaderType>CutoutComplex</shaderType>
+      <!-- <color>(90,30,30,85)</color> -->
+      <drawSize>2.2</drawSize>
+    </graphicData>
+    <filth>
+      <disappearsInDays>5~7</disappearsInDays>
+      <cleaningWorkToReduceThickness>450</cleaningWorkToReduceThickness>
+      <cleaningSound>Interact_CleanFilth_Dirt</cleaningSound>
+      <maxThickness>1</maxThickness>
+    </filth>
+    <statBases>
+      <Beauty>-10</Beauty>
+      <Cleanliness>0</Cleanliness>
+    </statBases>
+    <!-- <passability>Standable</passability> -->
+    <pathCost>40</pathCost>
+  </ThingDef>
+</Defs>

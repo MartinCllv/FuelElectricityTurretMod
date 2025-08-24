@@ -18,7 +18,7 @@ namespace FuelElectricityTurretMod
             Thing thingToIgnore = null,
             Thing thing = null)
         {
-            VerbProperties verbProperties = ((ThingDef)checkingDef).building.turretGunDef.Verbs.Find((Predicate<VerbProperties>)(v => v.verbClass == typeof(Verb_ShootBeam)));
+            VerbProperties verbProperties = ((ThingDef)checkingDef).building.turretGunDef.Verbs.Find((Predicate<VerbProperties>)(v => v.verbClass == typeof(Verb_DeathShootBeam)));
             if ((double)verbProperties.range > 0.0)
                 GenDraw.DrawRadiusRing(loc, verbProperties.range);
             if ((double)verbProperties.minRange > 0.0)

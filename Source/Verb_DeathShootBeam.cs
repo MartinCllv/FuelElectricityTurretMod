@@ -6,6 +6,7 @@ using System.Text;
 using System.Threading.Tasks;
 using UnityEngine;
 using Verse;
+using Verse.Noise;
 using Verse.Sound;
 
 namespace FuelElectricityTurretMod
@@ -132,6 +133,7 @@ namespace FuelElectricityTurretMod
 
         protected bool TryGetHitCell(IntVec3 source, IntVec3 targetCell, out IntVec3 hitCell)
         {
+            //this.TrySpawnFakefilthThing(this.verbProps.spawnDef, targetCell, 1, this.caster.Map);
             IntVec3 a = GenSight.LastPointOnLineOfSight(source, targetCell, (Func<IntVec3, bool>)(c => c.InBounds(this.caster.Map) && c.CanBeSeenOverFast(this.caster.Map)), true);
             if (this.verbProps.beamCantHitWithinMinRange && (double)a.DistanceTo(source) < (double)this.verbProps.minRange)
             {
@@ -149,14 +151,33 @@ namespace FuelElectricityTurretMod
             return hitCell;
         }
 
+        private void TrySpawnFakefilthThing(ThingDef thingDef, IntVec3 c, int count, Map map)
+        {
+            if (thingDef != null)
+            {
+                Thing thing;
+                if (thingDef.IsFilth)
+                {
+                    FilthMaker.TryMakeFilth(c, map, thingDef, count);
+                }
+                else if (GenSpawn.TrySpawn(thingDef, c, map, out thing))
+                {
+                    thing.stackCount = count;
+                    thing.TryGetComp<CompReleaseGas>()?.StartRelease();
+                }
+            }
+        }
+
         protected IEnumerable<IntVec3> GetBeamHitNeighbourCells(IntVec3 source, IntVec3 pos)
         {
             Verb_DeathShootBeam verbShootBeam = this;
+
             if (verbShootBeam.verbProps.beamHitsNeighborCells)
             {
                 GenExplosion.DoExplosion(
                     center: pos, map: verbShootBeam.Caster.Map, radius:3f, damType:this.verbProps.beamDamageDef, instigator: verbShootBeam.Caster,
-                    damAmount: 15, armorPenetration: 0.45f, explosionSound: this.verbProps.soundLanding, chanceToStartFire: 0.8f, damageFalloff: true);
+                    damAmount: 10, armorPenetration: 0.20f, explosionSound: this.verbProps.soundLanding, applyDamageToExplosionCellsNeighbors: true, chanceToStartFire: 0.7f, damageFalloff: true);
+                
                 for (int i = 0; i < 4; ++i)
                 {
                     IntVec3 hitNeighbourCell = pos + GenAdj.CardinalDirections[i];
@@ -287,6 +308,9 @@ namespace FuelElectricityTurretMod
             if (!cell.InBounds(this.caster.Map))
                 return;
             this.ApplyDamage(VerbUtility.ThingsToHit(cell, this.caster.Map, new Func<Thing, bool>(this.CanHit)).RandomElementWithFallback<Thing>(), sourceCell, damageFactor);
+
+            this.TrySpawnFakefilthThing(this.verbProps.spawnDef, cell, 1, this.caster.Map);
+
             if (!this.verbProps.beamSetsGroundOnFire || !Rand.Chance(this.verbProps.beamChanceToStartFire))
                 return;
             FireUtility.TryStartFireIn(cell, this.caster.Map, 1f, this.caster);

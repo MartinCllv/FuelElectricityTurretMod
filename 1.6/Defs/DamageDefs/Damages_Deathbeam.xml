@@ -14,16 +14,16 @@
     <overkillPctToDestroyPart>0.2~0.9</overkillPctToDestroyPart>
     <isRanged>true</isRanged>
     <makesAnimalsFlee>true</makesAnimalsFlee>
-    <igniteCellChance>1</igniteCellChance>
-    <defaultDamage>30</defaultDamage>
+    <igniteCellChance>0.8</igniteCellChance>
+    <defaultDamage>23</defaultDamage>
     <defaultStoppingPower>1.5</defaultStoppingPower>
     <defaultArmorPenetration>0.55</defaultArmorPenetration>
     <buildingDamageFactorImpassable>0.4</buildingDamageFactorImpassable>
     <buildingDamageFactorPassable>0.2</buildingDamageFactorPassable>
     <isExplosive>true</isExplosive>
-    <minDamageToFragment>15</minDamageToFragment>
+    <minDamageToFragment>10</minDamageToFragment>
     <explosionAffectOutsidePartsOnly>false</explosionAffectOutsidePartsOnly>
-    <explosionHeatEnergyPerCell>25</explosionHeatEnergyPerCell>
+    <explosionHeatEnergyPerCell>15</explosionHeatEnergyPerCell>
     <explosionCellFleck>HeatGlow_Intense</explosionCellFleck>
   </DamageDef>
   

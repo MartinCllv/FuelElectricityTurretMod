@@ -90,8 +90,8 @@
       <li Class="CompProperties_Flickable"/>
       <li Class="CompProperties_Breakdownable"/>
       <li Class="FuelElectricityTurretMod.CompProperties_Chargeable">
-        <chargeCapacity>4000</chargeCapacity>
-        <consumptionPerShoot>420</consumptionPerShoot>
+        <chargeCapacity>8000</chargeCapacity>
+        <consumptionPerShoot>820</consumptionPerShoot>
         <initialChargePercent>0.20</initialChargePercent>
         <efficiency>1</efficiency>
         <netPowerconsumptioOnCharge>2000</netPowerconsumptioOnCharge>
@@ -126,7 +126,7 @@
         <AccuracyShort>0.85</AccuracyShort>
         <AccuracyMedium>0.95</AccuracyMedium>
         <AccuracyLong>0.9</AccuracyLong>
-        <RangedWeapon_Cooldown>2</RangedWeapon_Cooldown>
+        <RangedWeapon_Cooldown>3</RangedWeapon_Cooldown>
         <DeteriorationRate>0</DeteriorationRate>
         <Mass>150</Mass>
         <Flammability>0</Flammability>
@@ -135,36 +135,36 @@
         <li>
           <verbClass>FuelElectricityTurretMod.Verb_DeathShootBeam</verbClass>
           <hasStandardCommand>true</hasStandardCommand>
-          <!-- <defaultProjectile>GravShip_Rocket</defaultProjectile> -->
-          <warmupTime>1.0</warmupTime>
+          <warmupTime>2.5</warmupTime>
           <range>45</range>
           <minRange>5</minRange>
-          <beamFullWidthRange>6</beamFullWidthRange>
+          <beamFullWidthRange>4</beamFullWidthRange>
           <burstShotCount>25</burstShotCount>
           <showBurstShotStats>false</showBurstShotStats>
-          <beamWidth>20</beamWidth>
-          <ticksBetweenBurstShots>7</ticksBetweenBurstShots>
+          <beamWidth>12</beamWidth>
+          <ticksBetweenBurstShots>6</ticksBetweenBurstShots>
           <beamDamageDef>DeathBeam</beamDamageDef>
           <soundCastTail>GunTail_Medium</soundCastTail>
           <muzzleFlashScale>9</muzzleFlashScale>
           <soundCastBeam>DeathBeamGraser_Shooting</soundCastBeam>
           <beamGroundFleckDef>Fleck_DeathBeamBurn</beamGroundFleckDef>
-          <beamFleckChancePerTick>0.2</beamFleckChancePerTick>
-          <beamMaxDeviation>1.5</beamMaxDeviation>
+          <beamFleckChancePerTick>0.8</beamFleckChancePerTick>
+          <beamMaxDeviation>1</beamMaxDeviation>
           <beamCurvature>0.6</beamCurvature>
           <beamMoteDef>Mote_GraserBeamBase</beamMoteDef>
           <beamEndEffecterDef>GraserBeam_End</beamEndEffecterDef>
           <beamChanceToStartFire>1</beamChanceToStartFire>
           <beamChanceToAttachFire>1</beamChanceToAttachFire>
-          <beamFireSizeRange>4.1~4.5</beamFireSizeRange>
-          <beamLineFleckDef>Fleck_BeamSpark</beamLineFleckDef>
-          <beamStartOffset>0.1</beamStartOffset>
+          <beamFireSizeRange>1.1~1.5</beamFireSizeRange>
+          <beamStartOffset>0.02</beamStartOffset>
           <highlightColor>(1,1,1,1)</highlightColor>
           <secondaryHighlightColor>(0.5,0.5,0.5,1)</secondaryHighlightColor>
           <beamTargetsGround>true</beamTargetsGround>
           <beamHitsNeighborCells>true</beamHitsNeighborCells>
           <beamHitsNeighborCellsRequiresLOS>false</beamHitsNeighborCellsRequiresLOS>
           <soundLanding>Explosion_Vaporize</soundLanding>
+          <spawnDef>Filth_BeamBlastMark</spawnDef>
+          <beamLineFleckDef>Fleck_BeamSpark</beamLineFleckDef>
           <beamLineFleckChanceCurve>
             <points>
               <li>(0, 0)</li>
